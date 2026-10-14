@@ -1,8 +1,5 @@
-# 📖 Atos 29 — Código-fonte (`lib/`)
+# Atos 29 — Código-fonte (`lib/`)
 
-![Flutter](https://img.shields.io/badge/Flutter-Material%203-02569B?logo=flutter&logoColor=white)
-![Firebase](https://img.shields.io/badge/Backend-Firebase-FFCA28?logo=firebase&logoColor=black)
-![Idioma](https://img.shields.io/badge/Idioma-pt--BR-009C3B)
 
 O **Atos 29** é um aplicativo católico de comunidade. A ideia é reunir em um só lugar o que o fiel usa no dia a dia: um feed para compartilhar e conviver, uma jornada de oração com novenas, terço, Lectio Divina e exame de consciência, a liturgia diária, o santo do dia e uma agenda de eventos da comunidade.
 
@@ -10,7 +7,7 @@ Esta pasta guarda todo o código Dart/Flutter do app. O backend roda no **Fireba
 
 > **Atenção:** o repositório contém apenas a pasta `lib/`. Para rodar o projeto é preciso o restante do app Flutter (`pubspec.yaml`, `android/`, `ios/` etc.), que não está incluído aqui.
 
-## ✨ O que o app faz
+## O que o app faz
 
 - **Comunidade:** feed com texto, fotos e enquetes, mural da comunidade, notificações e compartilhamento de posts em cartões (inclusive nos Stories do Instagram).
 - **Vida de oração:** jornada diária com missão do dia, novenas com acompanhamento de dias, Santo Terço interativo, Lectio Divina guiada com temporizador de silêncio, exame de consciência, biblioteca de orações e pedidos de oração.
@@ -18,7 +15,7 @@ Esta pasta guarda todo o código Dart/Flutter do app. O backend roda no **Fireba
 - **Institucional:** agenda de eventos, estatuto, Catecismo, sobre o app e termos legais.
 - **Administração:** moderação de usuários e posts, envio de notificações por tópico e gestão de papéis.
 
-## 🗂️ Estrutura
+## Estrutura
 
 ```
 lib/
@@ -45,7 +42,7 @@ lib/
 
 A organização segue uma divisão simples: o que é **compartilhado e sem interface** fica em `core/`, e o que é **tela ou funcionalidade** fica em `modules/`, separado por área (`admin`, `main`, `onboarding`).
 
-## 🚀 Fluxo de inicialização (`main.dart`)
+## Fluxo de inicialização (`main.dart`)
 
 1. Inicializa a formatação de datas em `pt_BR` e o Firebase.
 2. Ativa o **App Check** e o **NotificationService** com timeout e `try/catch`, para que uma falha nessas etapas nunca trave a abertura do app.
@@ -58,7 +55,7 @@ A organização segue uma divisão simples: o que é **compartilhado e sem inter
 
 O app é fixado em português do Brasil e usa Material 3 com a paleta vinho (`#4E0405`), branco e preto.
 
-## 🧱 `core/`
+##  `core/`
 
 | Arquivo | Responsabilidade |
 |---|---|
@@ -95,7 +92,7 @@ O app é fixado em português do Brasil e usa Material 3 com a paleta vinho (`#4
 - `atos29_page.dart`, `estatuto_page.dart`, `sobre_app_page.dart`, `legal_page.dart`
 - `calendario_page.dart` — agenda com eventos cadastrados pelos administradores
 
-## 🔌 Integrações externas
+##  Integrações externas
 
 **Firebase**
 - Auth (e-mail e senha, além de Google Sign-In), Firestore, Storage, Messaging e App Check
@@ -119,7 +116,7 @@ O app é fixado em português do Brasil e usa Material 3 com a paleta vinho (`#4
 
 Como várias dessas APIs ficam em hospedagens gratuitas (Render e Railway), a primeira requisição depois de um tempo parado pode demorar.
 
-## 🛡️ Papéis e moderação
+##  Papéis e moderação
 
 O campo `role` em `users/{uid}` define as permissões:
 
@@ -132,11 +129,11 @@ O campo `role` em `users/{uid}` define as permissões:
 
 O perfil é criado com padrões seguros (`role: user`, `canPost: true`, `status: active`) por `UserProfileService.ensureProfileCreated`, que também gera um apelido único. Toda ação de moderação passa pelo `AdminService` e fica registrada em `audit_logs`.
 
-## 🧩 Pacotes principais
+##  Pacotes principais
 
 `firebase_core`, `firebase_auth`, `cloud_firestore`, `firebase_storage`, `firebase_messaging`, `firebase_app_check`, `cloud_functions`, `google_sign_in`, `http`, `dio`, `shared_preferences`, `table_calendar`, `share_plus`, `image_picker`, `image_cropper`, `cached_network_image`, `syncfusion_flutter_pdfviewer` e `webview_flutter`.
 
-## 📝 Notas para quem for mexer no código
+##  Notas para quem for mexer no código
 
 - Existem telas de login e cadastro duplicadas em `modules/main/screens/` e em `modules/onboarding/screens/`. O fluxo ativo em `main.dart` usa as de `main`; as de `onboarding` parecem ser uma versão alternativa e podem ser consolidadas.
 - O **App Check** está configurado com provedores de **debug** em `main.dart`. Troque pelos provedores de produção (Play Integrity no Android e App Attest no iOS) antes de publicar.
