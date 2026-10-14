@@ -64,7 +64,7 @@ O app é fixado em português do Brasil e usa Material 3 com a paleta vinho (`#4
 | `notifications/notification_service.dart` | Pede permissão de notificação, registra o handler de mensagens em segundo plano e trata o toque em notificações, inclusive quando o app é aberto por elas. |
 | `notifications/novena_sync_service.dart` | Copia o estado da novena ativa (guardado em `SharedPreferences`) para `users/{uid}.novena`, permitindo lembretes personalizados. |
 
-## 📱 `modules/main/screens/`
+##  `modules/main/screens/`
 
 **Autenticação e conta**
 - `login_page.dart`, `register_page.dart`, `forgot_password_page.dart`, `verify_email_page.dart`
